@@ -1,8 +1,75 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Hero Section Principal -->
+<section class="hero-section text-white py-5 py-lg-6 my-0">
+    <div class="container py-4">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="badge badge-tech mb-3">
+                    <i class="bi bi-lightning-charge-fill text-warning me-1"></i> Tecnología de última generación
+                </span>
+                <h1 class="display-4 fw-extrabold mb-3 text-white">
+                    Innovación al alcance de tus manos en <span class="text-primary-tech">TechStore</span>
+                </h1>
+                <p class="lead text-secondary mb-4">
+                    Descubre nuestra exclusiva selección de laptops, componentes, periféricos gaming y dispositivos inteligentes con la garantía y respaldo que necesitas.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a asp-controller="Productos" asp-action="Index" class="btn btn-tech-primary shadow-sm">
+                        <i class="bi bi-bag-check me-2"></i>Ver Productos
+                    </a>
+                    <a asp-controller="Categorias" asp-action="Index" class="btn btn-tech-outline">
+                        <i class="bi bi-grid me-2"></i>Explorar Categorías
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 text-center">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop"
+                         alt="TechStore Hardware"
+                         class="img-fluid rounded-4 shadow-lg border border-secondary border-opacity-25" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Beneficios / Características -->
+<section class="py-5 bg-white">
+    <div class="container py-4">
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="tech-card p-4 h-100 d-flex flex-column align-items-center justify-content-center">
+                    <div class="feature-icon-wrapper mb-3">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Envíos Rápidos</h5>
+                    <p class="text-muted small mb-0">Entregas seguras y garantizadas directamente a tu puerta en todo el país.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="tech-card p-4 h-100 d-flex flex-column align-items-center justify-content-center">
+                    <div class="feature-icon-wrapper mb-3">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Garantía Asegurada</h5>
+                    <p class="text-muted small mb-0">Todos nuestros componentes y dispositivos cuentan con respaldo oficial de marca.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="tech-card p-4 h-100 d-flex flex-column align-items-center justify-content-center">
+                    <div class="feature-icon-wrapper mb-3">
+                        <i class="bi bi-headset"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Soporte Técnico</h5>
+                    <p class="text-muted small mb-0">Asesoría especializada antes, durante y después de tu compra.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

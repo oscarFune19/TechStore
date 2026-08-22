@@ -1,47 +1,84 @@
-﻿@model IEnumerable<TechStore.Models.Categoria>
-
-@{
+﻿@{
     ViewData["Title"] = "Categorías";
 }
 
-<section class="py-5">
-    <div class="container">
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-dark">Categorías</h1>
+        <p class="text-muted lead">Explora las categorías de productos disponibles en nuestra tienda.</p>
+    </div>
 
-        <div class="text-center mb-5">
-            <span class="badge bg-primary px-3 py-2 mb-3">TechStore</span>
-            <h1 class="display-5 fw-bold">Categorías</h1>
-            <p class="lead text-muted">Explora las categorías de productos disponibles en nuestra tienda.</p>
-        </div>
-
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            @foreach (var categoria in Model)
-            {
-                <div class="col d-flex">
-                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden w-100">
-                        <img src="@categoria.Imagen"
-                             class="card-img-top"
-                             alt="@categoria.Nombre"
-                             style="height:160px; object-fit:cover;" />
-
-                        <div class="card-body d-flex flex-column">
-                            <div class="mb-2">
-                                <span class="badge @(categoria.Activa ? "bg-primary" : "bg-secondary")">
-                                    @categoria.Nombre
-                                </span>
-                            </div>
-
-                            <h5 class="card-title fw-bold">@categoria.Nombre</h5>
-
-                            <p class="card-text text-muted flex-grow-1">@categoria.Descripcion</p>
-
-                            <div class="mt-3 d-flex justify-content-end">
-                                <a asp-controller="Categorias" asp-action="Index" class="btn btn-sm btn-outline-primary">Ver</a>
-                            </div>
-                        </div>
+    <div class="row g-4">
+        <!-- Computadoras -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80"
+                     class="card-img-top" alt="Computadoras" style="height: 180px; object-fit: cover;">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <span class="badge bg-primary mb-2">Computadoras</span>
+                        <h5 class="card-title fw-bold">Computadoras</h5>
+                        <p class="card-text text-muted small">Portátiles y equipos de escritorio para estudio, trabajo y gaming.</p>
+                    </div>
+                    <div class="mt-3 text-end">
+                        <a asp-controller="Productos" asp-action="Index" asp-route-categoria="Computadoras" class="btn btn-outline-primary btn-sm rounded-3 fw-bold">Ver</a>
                     </div>
                 </div>
-            }
+            </div>
         </div>
 
+        <!-- Smartphones -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
+                     class="card-img-top" alt="Smartphones" style="height: 180px; object-fit: cover;">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <span class="badge bg-primary mb-2">Smartphones</span>
+                        <h5 class="card-title fw-bold">Smartphones</h5>
+                        <p class="card-text text-muted small">Teléfonos móviles de última generación y accesorios.</p>
+                    </div>
+                    <div class="mt-3 text-end">
+                        <a asp-controller="Productos" asp-action="Index" asp-route-categoria="Smartphones" class="btn btn-outline-primary btn-sm rounded-3 fw-bold">Ver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+                     class="card-img-top" alt="Audio" style="height: 180px; object-fit: cover;">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <span class="badge bg-primary mb-2">Audio</span>
+                        <h5 class="card-title fw-bold">Audio</h5>
+                        <p class="card-text text-muted small">Auriculares, altavoces y equipos para una experiencia sonora superior.</p>
+                    </div>
+                    <div class="mt-3 text-end">
+                        <a asp-controller="Productos" asp-action="Index" asp-route-categoria="Audio" class="btn btn-outline-primary btn-sm rounded-3 fw-bold">Ver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gaming -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=600&q=80"
+                     class="card-img-top" alt="Gaming" style="height: 180px; object-fit: cover;">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <span class="badge bg-primary mb-2">Gaming</span>
+                        <h5 class="card-title fw-bold">Gaming</h5>
+                        <p class="card-text text-muted small">Periféricos, monitores y componentes para juegos.</p>
+                    </div>
+                    <div class="mt-3 text-end">
+                        <a asp-controller="Productos" asp-action="Index" asp-route-categoria="Gaming" class="btn btn-outline-primary btn-sm rounded-3 fw-bold">Ver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
+</div>
