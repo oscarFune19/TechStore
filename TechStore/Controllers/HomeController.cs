@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using TechStore.Models;
 
 namespace TechStore.Controllers
 {
@@ -11,15 +9,14 @@ namespace TechStore.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Contactenos()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult AcercaDe()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
     }
 }
