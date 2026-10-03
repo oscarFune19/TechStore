@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TechStore.Data;
+using TechStore.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<TechStoreDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("TechStoreConnection")));
+
+builder.Services.AddScoped<IProductoService, ProductoService>();
 
 // ─── Construcción de la app ──────────────────────────────────
 var app = builder.Build();
