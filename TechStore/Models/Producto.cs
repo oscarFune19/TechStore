@@ -13,9 +13,6 @@ namespace TechStore.Models
         public string Descripcion { get; set; } = string.Empty;
         [Required(ErrorMessage = "El precio es requerido")]
         public decimal Precio { get; set; }
-        [Required(ErrorMessage = "La categoría es requerida")]
-        [NotMapped]
-        public string Categoria { get; set; } = string.Empty;
         public int CategoriaId { get; set; }
         public Categoria? CategoriaEntidad { get; set; }
         [Required(ErrorMessage = "La imagen es requerida")]

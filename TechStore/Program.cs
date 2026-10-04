@@ -12,6 +12,7 @@ builder.Services.AddDbContext<TechStoreDbContext>(options =>
         builder.Configuration.GetConnectionString("TechStoreConnection")));
 
 builder.Services.AddScoped<IProductoService, ProductoService>();
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
 // ─── Construcción de la app ──────────────────────────────────
 var app = builder.Build();

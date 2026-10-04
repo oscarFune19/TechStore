@@ -1,0 +1,21 @@
+﻿@model TechStore.Models.Producto
+@{
+    ViewData["Title"] = "Agregar producto";
+}
+
+<div class="container py-5" style="max-width: 700px;">
+    <h1 class="fw-bold mb-4">Agregar producto</h1>
+
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <partial name="_FormularioProducto" model="Model" />
+
+        <button type="submit" class="btn btn-primary rounded-3 px-4">Guardar</button>
+        <a asp-action="Index" class="btn btn-outline-secondary rounded-3 px-4">Cancelar</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

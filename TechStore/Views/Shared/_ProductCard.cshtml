@@ -11,7 +11,7 @@
 
         <div class="mb-2">
             <span class="badge bg-primary">
-                @Model.Categoria
+                @Model.CategoriaEntidad?.Nombre
             </span>
         </div>
 
@@ -37,16 +37,22 @@
 
         @if (Model.Estado && Model.Stock > 0)
         {
-            <div class="alert alert-success py-2 mb-0 text-center">
+            <div class="alert alert-success py-2 mb-2 text-center">
                 Disponible
             </div>
         }
         else
         {
-            <div class="alert alert-secondary py-2 mb-0 text-center">
+            <div class="alert alert-secondary py-2 mb-2 text-center">
                 Agotado
             </div>
         }
+
+        <!-- BOTONES DE EDITAR Y ELIMINAR -->
+        <div class="d-flex gap-2 mt-auto">
+            <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-outline-primary btn-sm rounded-3 flex-fill">Editar</a>
+            <a asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-outline-danger btn-sm rounded-3 flex-fill">Eliminar</a>
+        </div>
 
     </div>
 </div>
