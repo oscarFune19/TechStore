@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TechStore.Models;
 
 namespace TechStore.Controllers
 {
+    [Authorize]
     public class CategoriasController : Controller
     {
         private static readonly List<Categoria> categorias = new()

@@ -1,4 +1,4 @@
-﻿@model TechStore.Models.Producto
+@model TechStore.Models.Producto
 
 <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
 
@@ -49,10 +49,13 @@
         }
 
         <!-- BOTONES DE EDITAR Y ELIMINAR -->
+        @if (User.IsInRole("Admin") || User.IsInRole("Vendedor"))
+        {
         <div class="d-flex gap-2 mt-auto">
             <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-outline-primary btn-sm rounded-3 flex-fill">Editar</a>
             <a asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-outline-danger btn-sm rounded-3 flex-fill">Eliminar</a>
         </div>
+        }
 
     </div>
 </div>

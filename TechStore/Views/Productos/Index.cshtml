@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Lista de Productos";
 }
 
@@ -7,11 +7,14 @@
     <p class="text-muted lead text-center">Explora nuestro catálogo de productos disponibles.</p>
 
     <!-- 1. BOTÓN DE AGREGAR (Debajo del subtítulo) -->
+    @if (User.IsInRole("Admin") || User.IsInRole("Vendedor"))
+    {
     <div class="text-center mt-3">
         <a asp-action="Create" class="btn btn-dark rounded-pill px-4">
             <i class="bi bi-plus-circle me-1"></i> Agregar producto
         </a>
     </div>
+    }
 
     <div class="row mt-4">
         @foreach (var item in Model)
@@ -37,10 +40,13 @@
                         }
 
                         <!-- 3. BOTONES DE EDITAR Y ELIMINAR (Justo después del bloque de estado/stock) -->
+                        @if (User.IsInRole("Admin") || User.IsInRole("Vendedor"))
+                        {
                         <div class="d-flex gap-2 mt-3">
                             <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-outline-primary btn-sm rounded-3 flex-fill">Editar</a>
                             <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-outline-danger btn-sm rounded-3 flex-fill">Eliminar</a>
                         </div>
+                        }
 
                     </div>
                 </div>

@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Acceso denegado";
+}
+
+<div class="container py-5 text-center" style="max-width: 640px;">
+    <div class="fs-1 text-warning mb-2"><i class="bi bi-shield-lock-fill"></i></div>
+    <p class="text-primary fw-bold mb-1" style="letter-spacing: .2rem;">403</p>
+    <h1 class="display-6 fw-bold">No tienes permiso para entrar aquí</h1>
+    <p class="lead text-muted">Tu cuenta no dispone de los permisos necesarios para acceder a esta funcionalidad.</p>
+    <div class="d-flex justify-content-center gap-2 flex-wrap mt-4">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary rounded-3 px-4">Volver al inicio</a>
+        <a asp-controller="Productos" asp-action="Index" class="btn btn-outline-primary rounded-3 px-4">Ver productos</a>
+    </div>
+</div>

@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using TechStore.Models;
 
 namespace TechStore.Data
 {
-    public class TechStoreDbContext : DbContext
+    public class TechStoreDbContext : IdentityDbContext<IdentityUser>
     {
         public TechStoreDbContext(DbContextOptions<TechStoreDbContext> options)
             : base(options)

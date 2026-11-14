@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TechStore.Models;
 using TechStore.Services;
 
 namespace TechStore.Controllers
 {
+    [Authorize]
     public class ProductosController : Controller
     {
         private readonly IProductoService _productoService;
@@ -35,12 +37,14 @@ namespace TechStore.Controllers
         }
 
         // AGREGAR
+        [Authorize(Roles = "Admin,Vendedor")]
         public async Task<IActionResult> Create()
         {
             await CargarCategoriasAsync();
             return View(new Producto { Estado = true });
         }
 
+        [Authorize(Roles = "Admin,Vendedor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Producto producto)
@@ -56,6 +60,7 @@ namespace TechStore.Controllers
         }
 
         // EDITAR
+        [Authorize(Roles = "Admin,Vendedor")]
         public async Task<IActionResult> Edit(int id)
         {
             var producto = await _productoService.ObtenerPorIdAsync(id);
@@ -65,6 +70,7 @@ namespace TechStore.Controllers
             return View(producto);
         }
 
+        [Authorize(Roles = "Admin,Vendedor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Producto producto)
@@ -84,6 +90,7 @@ namespace TechStore.Controllers
         }
 
         // ELIMINAR (pantalla de confirmación)
+        [Authorize(Roles = "Admin,Vendedor")]
         public async Task<IActionResult> Delete(int id)
         {
             var producto = await _productoService.ObtenerPorIdAsync(id);
@@ -92,6 +99,7 @@ namespace TechStore.Controllers
             return View(producto);
         }
 
+        [Authorize(Roles = "Admin,Vendedor")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
