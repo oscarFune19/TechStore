@@ -9,9 +9,18 @@
     <!-- 1. BOTÓN DE AGREGAR (Debajo del subtítulo) -->
     @if (User.IsInRole("Admin") || User.IsInRole("Vendedor"))
     {
-    <div class="text-center mt-3">
+    <div class="d-flex justify-content-center flex-wrap gap-2 mt-3">
         <a asp-action="Create" class="btn btn-dark rounded-pill px-4">
             <i class="bi bi-plus-circle me-1"></i> Agregar producto
+        </a>
+        <a asp-action="ExportarExcel" class="btn btn-success rounded-pill px-4">
+            <i class="bi bi-file-earmark-excel me-1"></i> Exportar a Excel
+        </a>
+        <a asp-action="DescargarReporte" class="btn btn-danger rounded-pill px-4">
+            <i class="bi bi-file-earmark-pdf me-1"></i> Descargar Reporte
+        </a>
+        <a asp-action="Reporte" class="btn btn-outline-danger rounded-pill px-4">
+            <i class="bi bi-eye me-1"></i> Ver Reporte
         </a>
     </div>
     }
@@ -38,6 +47,10 @@
                         {
                             <span class="badge bg-danger">Agotado</span>
                         }
+
+                        <div class="mt-3">
+                            <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-outline-secondary btn-sm rounded-3 w-100">Ver detalles</a>
+                        </div>
 
                         <!-- 3. BOTONES DE EDITAR Y ELIMINAR (Justo después del bloque de estado/stock) -->
                         @if (User.IsInRole("Admin") || User.IsInRole("Vendedor"))

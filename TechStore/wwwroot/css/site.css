@@ -95,3 +95,22 @@ body {
 .hover-white:hover {
     color: #ffffff !important;
 }
+
+/* Estilos para componentes reutilizables */
+.reusable-section .info-card,
+.reusable-section .feature-card {
+    background: #fff;
+    border-radius: .5rem;
+    padding: 1rem;
+    box-shadow: 0 0 .5rem rgba(0,0,0,0.04);
+}
+
+.reusable-section .icon-placeholder {
+    font-size: 1.4rem;
+}
+
+@media (max-width:768px) {
+    .reusable-section .feature-card ul {
+        padding-left: 1rem;
+    }
+}

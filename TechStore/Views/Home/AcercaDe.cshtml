@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Acerca de nosotros";
 }
 
@@ -53,4 +53,19 @@
             </div>
         </div>
     </div>
+
+    <section class="reusable-section my-5">
+        <h2 class="h4 mb-3">¿Quieres saber más?</h2>
+        <div class="row g-3">
+            <div class="col-md-4">
+                @await Html.PartialAsync("_InfoCard", new { Title = "Atención al cliente", Description = "Consultas, garantías y soporte técnico para tus compras.", Link = "/Home/Contactenos", LinkText = "Contáctanos" })
+            </div>
+            <div class="col-md-4">
+                @await Html.PartialAsync("_FeatureCard", new { Title = "Categorías destacadas", Subtitle = "Lo más buscado en la tienda", Items = new[] { "Computadoras", "Smartphones", "Audio" }, Link = "/Categorias", LinkText = "Ver categorías", Icon = "bi bi-tags" })
+            </div>
+            <div class="col-md-4">
+                @await Html.PartialAsync("_FeatureCard", new { Title = "Catálogo de productos", Subtitle = "Equipos y accesorios disponibles", Items = new[] { "Laptops", "Periféricos gaming", "Dispositivos inteligentes" }, Link = "/Productos", LinkText = "Explorar", Icon = "bi bi-grid-3x3-gap" })
+            </div>
+        </div>
+    </section>
 </div>

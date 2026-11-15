@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using TechStore.Controllers;
 using TechStore.Models;
@@ -157,11 +158,45 @@ public class ProductosControllerTests
             Times.Once);
     }
 
+    [Fact]
+    public async Task Details_ProductoExiste_RetornaVistaConElProducto()
+    {
+        var producto = CrearProducto(1, "Laptop");
+
+        _productoServiceMock
+            .Setup(s => s.ObtenerPorIdAsync(1))
+            .ReturnsAsync(producto);
+
+        var controller = CrearController();
+
+        var resultado = await controller.Details(1);
+
+        var vista = Assert.IsType<ViewResult>(resultado);
+        Assert.Same(producto, vista.Model);
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(999)]
+    public async Task Details_ProductoNoExiste_RetornaNotFound(int id)
+    {
+        _productoServiceMock
+            .Setup(s => s.ObtenerPorIdAsync(id))
+            .ReturnsAsync((Producto?)null);
+
+        var controller = CrearController();
+
+        var resultado = await controller.Details(id);
+
+        Assert.IsType<NotFoundResult>(resultado);
+    }
+
     private ProductosController CrearController()
     {
         return new ProductosController(
             _productoServiceMock.Object,
-            _categoriaServiceMock.Object);
+            _categoriaServiceMock.Object,
+            NullLogger<ProductosController>.Instance);
     }
 
     private static Producto CrearProducto(int id, string nombre)
