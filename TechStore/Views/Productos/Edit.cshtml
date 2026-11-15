@@ -1,25 +1,22 @@
-﻿@model TechStore.Models.Producto
+@model TechStore.Models.Producto
 @{
-    ViewData["Title"] = "Eliminar producto";
+    ViewData["Title"] = "Editar producto";
 }
 
-<div class="container py-5" style="max-width: 600px;">
-    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-        <img src="@Model.Imagen" alt="@Model.Nombre" style="height: 220px; object-fit: cover;" />
-        <div class="card-body p-4">
-            <h2 class="fw-bold text-danger">¿Eliminar este producto?</h2>
-            <p class="text-muted">Esta acción no se puede deshacer.</p>
+<div class="container py-5" style="max-width: 700px;">
+    <h1 class="fw-bold mb-4">Editar producto</h1>
 
-            <h5 class="fw-bold">@Model.Nombre</h5>
-            <p class="mb-1"><strong>Categoría:</strong> @Model.CategoriaEntidad?.Nombre</p>
-            <p class="mb-1"><strong>Precio:</strong> $@Model.Precio.ToString("N2")</p>
-            <p class="mb-4"><strong>Stock:</strong> @Model.Stock</p>
+    <form asp-action="Edit" asp-route-id="@Model.ID" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ID" />
 
-            <form asp-action="Delete" method="post">
-                <input type="hidden" name="id" value="@Model.ID" />
-                <button type="submit" class="btn btn-danger rounded-3 px-4">Sí, eliminar</button>
-                <a asp-action="Index" class="btn btn-outline-secondary rounded-3 px-4">Cancelar</a>
-            </form>
-        </div>
-    </div>
+        <partial name="_FormularioProducto" model="Model" />
+
+        <button type="submit" class="btn btn-primary rounded-3 px-4">Guardar cambios</button>
+        <a asp-action="Index" class="btn btn-outline-secondary rounded-3 px-4">Cancelar</a>
+    </form>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
